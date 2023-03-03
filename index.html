@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Gallery</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        color: #333;
+        background-color: #f5f5f5;
+      }
+
+      header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 50px;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-gap: 20px;
+        padding: 20px;
+      }
+
+      .gallery-item {
+        position: relative;
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .gallery-item img {
+        max-width: 100%;
+        height: auto;
+        transition: all 0.3s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.2);
+      }
+
+      .gallery-item:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .gallery-item:hover:before {
+        opacity: 1;
+      }
+
+      .gallery-item h2 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        padding: 0;
+        font-size: 24px;
+        color: white;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .gallery-item:hover h2 {
+        opacity: 1;
+      }
+
+      .gallery-item p {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        color: white;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .gallery-item:hover p {
+        opacity: 1;
+      }
+
+      .gallery-item button {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .gallery-item:hover button {
+        opacity: 1;
+      }
+
+      .gallery-item button:hover {
+        background-color: white;
+        color: #333;
+      }
+
+      .gallery-item .overlay {
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 50px;
+        background-color: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .gallery-item:hover .overlay {
+        bottom: 0;
+        opacity: 1;
+      }
+
+      .gallery-item .overlay p {
+        margin: 10px;
+        padding: 0;
+        font-size: 16px;
+        color: #333;
+      }
+
+      .gallery-item .overlay button {
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .gallery-item .overlay button:hover {
+        background-color: white;
+        color: #333;
+      }
+
+      footer {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+
+      footer a {
+        color: white;
+        text-decoration: none;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .intro {
+        background-image: url("https://picsum.photos/1600/900");
+        background-size: cover;
+        background-position: center;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 1s ease;
+      }
+
+      .intro h1 {
+        font-size: 50px;
+        color: white;
+        text-shadow: 2px 2px #333;
+      }
+
+      @media (max-width: 768px) {
+        main {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-item:hover h2,
+        .gallery-item:hover p,
+        .gallery-item:hover button,
+        .gallery-item:hover .overlay {
+          opacity: 1;
+          bottom: 0;
+        }
+
+        .gallery-item:hover img {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>My Gallery</header>
+    <main>
+      <div class="gallery-item">
+        <img
+          src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+          alt="Image 1"
+        />
+        <h2>Forest</h2>
+        <p>Lorem ipsum dolor sit amet. 1</p>
+        <button>View</button>
+        <div class="overlay">
+          <p>Forests</p>
+        </div>
+        <div class="slide-in">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis, eius.
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+          alt="Image 2"
+        />
+        <h2>Beach</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <button>View</button>
+        <div class="overlay">
+          <p>Beach</p>
+        </div>
+        <div class="slide-in">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque,
+          dolorum!
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80"
+          alt="Image 3"
+        />
+        <h2>Flowers</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <button>View</button>
+        <div class="overlay">
+          <p>Flowers</p>
+        </div>
+        <div class="slide-in">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum,
+          molestiae.
+        </div>
+      </div>
+      <!-- Repeat for additional gallery items -->
+    </main>
+
+    <main>
+      <div class="gallery-item">
+        <img
+          src="https://images.unsplash.com/photo-1510784722466-f2aa9c52fff6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+          alt="Image 1"
+        />
+        <h2>Sun Set</h2>
+        <p>Lorem ipsum dolor sit amet. 1</p>
+        <button>View</button>
+        <div class="overlay">
+          <p>Sun Set</p>
+        </div>
+        <div class="slide-in">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis, eius.
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+          alt="Image 2"
+        />
+        <h2>Sun Rise</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <button>View</button>
+        <div class="overlay">
+          <p>Sun Rise</p>
+        </div>
+        <div class="slide-in">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque,
+          dolorum!
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+          alt="Image 3"
+        />
+        <h2>Jungle</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <button>View</button>
+        <div class="overlay">
+          <p>Jungle</p>
+        </div>
+        <div class="slide-in">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum,
+          molestiae.
+        </div>
+      </div>
+      <!-- Repeat for additional gallery items -->
+    </main>
+  </body>
+</html>
